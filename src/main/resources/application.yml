@@ -1,0 +1,17 @@
+spring.rabbitmq:
+  host: localhost
+  port: 5672
+  password: guest
+  username: guest
+  
+logging.pattern.console: '%d{HH:mm:ss} %-10.35logger{45} - %msg%n'
+
+---
+
+spring.config.activate.on-profile: producer
+server.port: 80
+
+---
+
+spring.config.activate.on-profile: consumer
+server.port: 8888
