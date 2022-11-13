@@ -6,9 +6,10 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import de.bsi.rabbitmq.Comment;
+import de.bsi.rabbitmq.RabbitmqConfig;
 import lombok.extern.slf4j.Slf4j;
 
-@RabbitListener(queues = "comments")
+@RabbitListener(queues = RabbitmqConfig.COMMENT_QUEUE)
 @Component
 @Slf4j
 @Profile("consumer")

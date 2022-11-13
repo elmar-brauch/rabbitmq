@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.bsi.rabbitmq.Comment;
+import de.bsi.rabbitmq.RabbitmqConfig;
 
 @RestController
 @Profile("producer")
@@ -25,7 +26,7 @@ public class CommentProducerService {
 				.author("Elmar")
 				.createdAt(LocalDateTime.now())
 				.build();
-		rabbitTemplate.convertAndSend("comments", comment);
+		rabbitTemplate.convertAndSend(RabbitmqConfig.COMMENT_QUEUE, comment);
 		return comment;
 	}
 	
@@ -33,7 +34,7 @@ public class CommentProducerService {
 			produces = MediaType.TEXT_PLAIN_VALUE)
 	public String createText() {
 		var text = "New simple text message created.";
-		rabbitTemplate.convertAndSend("comments", text);
+		rabbitTemplate.convertAndSend(RabbitmqConfig.COMMENT_QUEUE, text);
 		return text;
 	}
 }
