@@ -24,7 +24,7 @@ public class RabbitmqConfig {
 		if (admin.getQueueInfo(COMMENT_QUEUE) != null)
 			admin.purgeQueue(COMMENT_QUEUE);
 		else
-			admin.declareQueue(QueueBuilder.durable(RabbitmqConfig.COMMENT_QUEUE).build());
+			admin.declareQueue(QueueBuilder.durable(COMMENT_QUEUE).build());
 		return admin;
 	}
 	
